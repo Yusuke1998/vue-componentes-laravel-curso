@@ -13,12 +13,12 @@
             </form>
             <hr>
             <ul class="list-unstyled">
-                <li>
+                <li v-for="idea in ideas">
                 <p>
                     <small class="text-muted">
-                        <em>Hace un minuto</em>
+                        <em>{{ idea.created_at }}</em>
                     </small>
-                    Estudiar...
+                    {{ idea.descripcion }}
                 </p>
                 </li>
             </ul>
@@ -27,8 +27,27 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
-        mounted() {
+        data(){
+            return {
+                ideas: []
+            }
+        },
+        created: function(){
+            this.getIdeas()
+        },
+        methods: {
+            getIdeas: function(){
+                var me = this;
+                var url = "/mis-ideas";
+                axios.get(url).then(function(response){
+                    me.ideas = response.data;
+                    console.log(response.data);
+                }); 
+            }
+        },
+        mounted: function() {
         }
     }
 </script>
