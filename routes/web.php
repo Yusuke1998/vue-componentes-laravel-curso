@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::get('mis-ideas','IdeasController@index');
 Route::post('guardar-idea','IdeasController@store');
+Route::delete('eliminar-idea/{id}','IdeasController@destroy');

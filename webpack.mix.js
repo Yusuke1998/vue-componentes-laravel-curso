@@ -12,4 +12,8 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .scripts([
+   	'resources/assets/js/alertify.min.js',
+   	'resources/assets/js/moment.min.js'],'public/js/my-app.js')
+   .styles('resources/assets/css/alertify.min.css','public/css/my-app.css');

@@ -25,6 +25,7 @@ class IdeasController extends Controller
 
     public function destroy($id)
     {
-        //
+        $idea = Idea::find($id)->delete();
+        return;
     }
 }
